@@ -7,13 +7,18 @@ import java.util.LinkedList;
 
 import com.ace.neon.framework.GameObject;
 import com.ace.neon.framework.ObjectId;
+import com.ace.neon.framework.Texture;
+import com.ace.neon.window.Game;
 
 public class Block extends GameObject{
-
-	public Block(float x, float y, ObjectId id) {
+	
+	Texture tex = Game.getInstance();
+	private int type;
+	
+	public Block(float x, float y, int type, ObjectId id) {
 		super(x, y, id);
 
-
+		this.type = type;
 	}
 
 
@@ -22,8 +27,15 @@ public class Block extends GameObject{
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.white);
-		g.drawRect((int)x, (int)y, 32,  32);
+		if(type == 0){
+			g.drawImage(tex.block[0], (int)x, (int)y, null);
+			//g.setColor(Color.red);
+			//g.drawRect((int)x, (int)y, 32,  32);
+		}
+		//else{
+		//g.setColor(Color.white);
+		//g.drawRect((int)x, (int)y, 32,  32);
+		//}
 		
 	}
 

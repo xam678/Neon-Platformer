@@ -51,21 +51,21 @@ public class Handler {
 		// Level Z
 		for(int xx = 0; xx < Game.WIDTH + 32; xx += 32)
 		{
-			addObject(new Block(xx, Game.HEIGHT-23, ObjectId.Block) );
+			addObject(new Block(xx, Game.HEIGHT-23, 0, ObjectId.Block) );
 		}
 		
 		for(int i = 0; i < (32 * 10) ; i += 32)
 		{
-			addObject(new Block(250+i, Game.HEIGHT-250, ObjectId.Block));
+			addObject(new Block(250+i, Game.HEIGHT-250, 0, ObjectId.Block));
 		}
 		
 		for(int i = 0; i < (32 * 18) ; i += 32)
 		{
-			addObject(new Block(0, i, ObjectId.Block));
+			addObject(new Block(0, i, 0, ObjectId.Block));
 		}
 		for(int i = 0; i < (32 * 18) ; i += 32)
 		{
-			addObject(new Block(Game.WIDTH-23, i, ObjectId.Block));
+			addObject(new Block(Game.WIDTH-23, i, 0, ObjectId.Block));
 		}
 	}
 }

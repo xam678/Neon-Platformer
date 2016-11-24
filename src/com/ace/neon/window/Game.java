@@ -10,28 +10,33 @@ import java.awt.image.BufferedImage;
 import com.ace.neon.framework.GameObject;
 import com.ace.neon.framework.KeyInput;
 import com.ace.neon.framework.ObjectId;
+import com.ace.neon.framework.Texture;
 import com.ace.neon.objects.Block;
 import com.ace.neon.objects.Player;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = -263086405887877294L;
 	
-	private static final float VERSION = 0.01f;
-	public static int WIDTH = 800;
-	public static int HEIGHT = 600;
+	//public static int HEIGHT = 600;
 	
 	private boolean running = false;
 	private Thread thread;
 	
+	private static final float VERSION = 0.01f;
+	public static int WIDTH = 800, HEIGHT = 600;
+	
+	private BufferedImage level = null;
+	
 	Handler handler;
 	Camera cam;
-	private BufferedImage level;
+	static Texture tex;
 	
 	public void init()
 	{
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
 		BufferedImageLoader loader = new BufferedImageLoader();
+		tex = new Texture();
 		
 		level = loader.loadImage("/levels.png");
 		
@@ -142,7 +147,11 @@ public class Game extends Canvas implements Runnable{
 				
 				if(red == 255 && green == 255 && blue == 255)
 				{
-					handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32, 0, ObjectId.Block));
+				}
+				if(red == 255 && green == 0 && blue == 0)
+				{
+					handler.addObject(new Block(xx*32, yy*32, 0, ObjectId.Block));
 				}
 				if(red == 0 && green == 0 && blue == 255)
 				{
@@ -150,6 +159,10 @@ public class Game extends Canvas implements Runnable{
 				}
 			}
 		}
+	}
+	public static Texture getInstance()
+	{
+		return tex;
 	}
 	public static void main(String[] args)
 	{
