@@ -50,11 +50,6 @@ public class Player extends GameObject{
 			
 			if(tempObject.getId() == ObjectId.Block){
 				
-				if(getBoundsTop().intersects(tempObject.getBounds())){
-					y = tempObject.getY() + 32;
-					velY=0;
-					
-				}
 				if(getBounds().intersects(tempObject.getBounds())){
 					y = tempObject.getY() - height;
 					velY=0;
@@ -65,7 +60,20 @@ public class Player extends GameObject{
 				{
 					falling = true;
 				}
-				
+				if( getBoundsTop().intersects(tempObject.getBounds()) && getBoundsRight().intersects(tempObject.getBounds()) ){
+					x = tempObject.getX() - width;
+					velX=0;
+					
+				}
+				else if( getBoundsTop().intersects(tempObject.getBounds()) && getBoundsLeft().intersects(tempObject.getBounds())) {
+					x = tempObject.getX() + 32;
+					velX=0;
+				}
+				else if( getBoundsTop().intersects(tempObject.getBounds()) && !getBoundsRight().intersects(tempObject.getBounds()) && !getBoundsLeft().intersects(tempObject.getBounds()))
+				{
+					y = tempObject.getY() + 32;
+					velY = 0;
+				}
 				if(getBoundsRight().intersects(tempObject.getBounds())){
 					x = tempObject.getX() - width;
 					velX=0;
