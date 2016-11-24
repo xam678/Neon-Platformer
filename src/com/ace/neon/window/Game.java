@@ -118,8 +118,8 @@ public class Game extends Canvas implements Runnable{
 		g2d.translate(cam.getX(), cam.getY()); //Start camera
 		
 		
-		g.setColor(Color.white);
-		g.fillRect(-300, 0, getWidth()+600, getHeight());
+		g.setColor(Color.black);
+		g.fillRect(-300, 0, getWidth()*10, getHeight());
 		
 //////////////////////////////////////////////////
 		handler.render(g);
