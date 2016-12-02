@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 import com.ace.neon.framework.GameObject;
-import com.ace.neon.framework.ObjectId;
-import com.ace.neon.objects.Block;
+//import com.ace.neon.framework.ObjectId;
+//import com.ace.neon.objects.Block;
 
 
 public class Handler {
@@ -45,8 +45,8 @@ public class Handler {
 		this.object.remove(object);
 	}
 	
-	
-	public void createLevel()
+	// Can either Hard code levels like so- or use the image buffer \\
+	/*public void createLevel()
 	{
 		// Level Z
 		for(int xx = 0; xx < Game.WIDTH + 32; xx += 32)
@@ -67,5 +67,5 @@ public class Handler {
 		{
 			addObject(new Block(Game.WIDTH-23, i, 0, ObjectId.Block));
 		}
-	}
+	}*/
 }

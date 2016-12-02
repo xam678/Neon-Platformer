@@ -15,7 +15,7 @@ import com.ace.neon.objects.Block;
 import com.ace.neon.objects.Player;
 
 public class Game extends Canvas implements Runnable{
-	private static final long serialVersionUID = -263086405887877294L;
+	private static final long serialVersionUID = 1L;
 	
 	//public static int HEIGHT = 600;
 	
@@ -124,7 +124,7 @@ public class Game extends Canvas implements Runnable{
 		
 		
 		g.setColor(Color.black);
-		g.fillRect(-300, 0, getWidth()*10, getHeight());
+		g.fillRect(-300, -200, getWidth()*10, getHeight()*4);
 		
 //////////////////////////////////////////////////
 		handler.render(g);
@@ -138,24 +138,24 @@ public class Game extends Canvas implements Runnable{
 		int w = image.getWidth();
 		int h = image.getHeight();
 		
-		for(int xx = 0; xx < h; xx++){
-			for(int yy = 0; yy < w; yy++){
-				int pixel = image.getRGB(xx, yy);
+		for(int xx = 0; xx < h; xx++){ 
+			for(int yy = 0; yy < w; yy++){ //Filter throuch each col, row
+				int pixel = image.getRGB(xx, yy); //get the color of each pixel
 				int red = (pixel >> 16) & 0xff; // Bit Operator? da fuck?
-				int green = (pixel >> 8) & 0xff;
-				int blue = (pixel) & 0xff;
+				int green = (pixel >> 8) & 0xff; // converts green to a 255 rgb scale i guess?
+				int blue = (pixel) & 0xff; // kinda looks like it.
 				
 				if(red == 255 && green == 255 && blue == 255)
 				{
-					handler.addObject(new Block(xx*32, yy*32, 0, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32, ObjectId.Block, 0));
 				}
 				if(red == 255 && green == 0 && blue == 0)
 				{
-					handler.addObject(new Block(xx*32, yy*32, 0, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32, ObjectId.Block, 1));
 				}
 				if(red == 0 && green == 0 && blue == 255)
 				{
-					handler.addObject(new Player(xx*32, yy*32, handler, ObjectId.Player));
+					handler.addObject(new Player(xx*32, yy*32, handler, ObjectId.Player, 0));
 				}
 			}
 		}

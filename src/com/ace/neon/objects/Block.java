@@ -1,6 +1,5 @@
 package com.ace.neon.objects;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
@@ -15,8 +14,8 @@ public class Block extends GameObject{
 	Texture tex = Game.getInstance();
 	private int type;
 	
-	public Block(float x, float y, int type, ObjectId id) {
-		super(x, y, id);
+	public Block(float x, float y, ObjectId id, int type) {
+		super(x, y, id, type);
 
 		this.type = type;
 	}
@@ -29,16 +28,14 @@ public class Block extends GameObject{
 	public void render(Graphics g) {
 		if(type == 0){
 			g.drawImage(tex.block[0], (int)x, (int)y, null);
-			//g.setColor(Color.red);
-			//g.drawRect((int)x, (int)y, 32,  32);
 		}
-		//else{
-		//g.setColor(Color.white);
-		//g.drawRect((int)x, (int)y, 32,  32);
-		//}
-		
+		else if(type == 1){
+			g.drawImage(tex.block[1], (int)x, (int)y, null);
+		}
 	}
-
+	public int getType(){
+		return type;
+	}
 
 	public Rectangle getBounds() {
 		

@@ -7,16 +7,18 @@ import java.util.LinkedList;
 public abstract class GameObject {
 	
 	protected float x, y;
+	protected int type;
 	protected float velX = 0, velY = 0;
 	protected ObjectId id;
 	protected boolean falling = true;
 	protected boolean jumping = false;
 	
-	public GameObject(float x, float y, ObjectId id)
+	public GameObject(float x, float y, ObjectId id, int type)
 	{
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		this.type = type;
 	}
 	
 	public abstract void tick(LinkedList<GameObject> object);
@@ -45,6 +47,12 @@ public abstract class GameObject {
 	}
 	public  void setVelY(float velY){
 		this.velY = velY;
+	}
+	public int getType(){
+		return type;
+	}
+	public void setType(){
+		this.type = type;
 	}
 	public  ObjectId getId(){
 		return id;
